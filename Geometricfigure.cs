@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace lab10._1
 {
-    internal class GeometricFigure
+    public class GeometricFigure
     {
         //Название фигуры
         public string Name { get; set; }

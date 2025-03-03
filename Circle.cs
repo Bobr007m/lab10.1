@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab10._1
 {
-    internal class Circle: GeometricFigure
+    public class Circle: GeometricFigure
     {
         protected double radius;
         // Радиус окружности

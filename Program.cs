@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Geometryclass;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ namespace lab10._1
     {
         static void Main(string[] args)
         {
+            // Виртуальные функции позволяют переопределить поведение в производных классах, обычные функции используют поведение, определенное в базовом классе
             GeometricFigure f1 = new GeometricFigure();
             f1.Show();
             GeometricFigure f2 = new GeometricFigure("Прямоугольник");

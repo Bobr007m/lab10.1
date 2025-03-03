@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab10._1
 {
-    internal class Rectangle: GeometricFigure
+    public class Rectangle: GeometricFigure
     {
         protected double length;
         protected double width;

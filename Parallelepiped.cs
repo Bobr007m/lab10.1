@@ -7,7 +7,7 @@ using System.Xml.Schema;
 
 namespace lab10._1
 {
-    internal class Parallelepiped: GeometricFigure
+    public class Parallelepiped: GeometricFigure
     {
         protected double height;
         // Высота параллелепипеда
