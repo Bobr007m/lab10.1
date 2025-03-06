@@ -5,7 +5,9 @@ VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lab10.1", "lab10.1.csproj", "{247F5138-7F11-4FE0-9835-D87085F34E92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Geometryclass", "..\Ceometryclass\Geometryclass.csproj", "{F411E1FF-4D02-42EB-9D9C-2D03926DFB81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Geometryclass", "..\Ceometryclass\Geometryclass.csproj", "{F411E1FF-4D02-42EB-9D9C-2D03926DFB81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibraryCarr", "..\ClassLibraryCarr\ClassLibraryCarr.csproj", "{FCAC5D30-090D-48F3-B645-2D128342D7E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F411E1FF-4D02-42EB-9D9C-2D03926DFB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F411E1FF-4D02-42EB-9D9C-2D03926DFB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F411E1FF-4D02-42EB-9D9C-2D03926DFB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCAC5D30-090D-48F3-B645-2D128342D7E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCAC5D30-090D-48F3-B645-2D128342D7E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCAC5D30-090D-48F3-B645-2D128342D7E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCAC5D30-090D-48F3-B645-2D128342D7E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
