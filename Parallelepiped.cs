@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Schema;
-
-namespace lab10._1
+﻿namespace lab10._1
 {
-    public class Parallelepiped: GeometricFigure
+    public class Parallelepiped : Geometrycfigure
     {
         protected double height;
         // Высота параллелепипеда
@@ -23,12 +16,12 @@ namespace lab10._1
             }
         }
         // Конструктор по умолчанию, вызывает конструктор базового класса с именем "Параллелепипед"
-        public Parallelepiped() : base("Параллелепипед")
+        public Parallelepiped()
         {
             height = 1;
         }
         // Конструктор с параметрами
-        public Parallelepiped(double height) : base("Параллелепипед")
+        public Parallelepiped(double height)
         {
             Height = height;
         }
@@ -44,11 +37,18 @@ namespace lab10._1
             Random rnd = new Random();
             Height = rnd.Next(1, 100);
         }
-        public override void Show()
+        public void Show()
         {
             Console.WriteLine($"Высота = {height}");
             Console.ReadLine();
         }
         public override string ToString() => base.ToString() + $", Высота: {Height}";
+        public override int CompareTo(Geometryfigure1 other)
+        {
+            if (other is Parallelepiped1 otherPara)
+                return this.Height.CompareTo(otherPara.Height);
+            return base.CompareTo(other);
+        }
+
     }
 }

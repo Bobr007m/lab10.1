@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab10._1
 {
-    public class Circle: GeometricFigure
+    public class Circle : Geometrycfigure
     {
         protected double radius;
         // Радиус окружности
@@ -22,11 +22,11 @@ namespace lab10._1
             }
         }
         // Конструктор по умолчанию, вызывает конструктор базового класса с именем "Окружность"
-        public Circle() : base("Окружность")
+        public Circle()
         {
             radius = 1;
         }
-        public Circle(double radius) : base("Окружность")
+        public Circle(double radius)
         {
             Radius = radius;
         }
@@ -35,23 +35,30 @@ namespace lab10._1
         {
             return Math.PI * Radius * Radius;
         }
-        public override void Init()
+        public override void Init() : base ("Окружность")
         {
             base.Init();
             Console.Write("Введите радиус: ");
             Radius = Convert.ToDouble(Console.ReadLine());
         }
-        public override void RandomInit()
+        public override void RandomInit(): base ("Окружность")
         {
             base.RandomInit();
             Random rnd = new Random();
             Radius = rnd.Next(1, 100);
         }
 
-        public override void Show()
+        public void Show()
         {
             Console.WriteLine($"Окружность с радиусом {radius}");
         }
         public override string ToString() => base.ToString() + $", Радиус: {Radius}";
+        // Переопределение CompareTo для сортировки по радиусу
+        public override int CompareTo(Geometryfigure1 other)
+        {
+            if (other is Circle1 otherCircle)
+                return this.Radius.CompareTo(otherCircle.Radius);
+            return base.CompareTo(other);
+        }
     }
 }

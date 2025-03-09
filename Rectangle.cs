@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab10._1
 {
-    public class Rectangle: GeometricFigure
+    public class Rectangle : Geometrycfigure
     {
         protected double length;
         protected double width;
@@ -14,7 +14,7 @@ namespace lab10._1
         public double Length
         {
             get
-            {return length; }
+            { return length; }
             set
             {
                 if (value <= 0)
@@ -35,18 +35,18 @@ namespace lab10._1
             }
         }
         // Площадь прямоугольника
-        public double Area ()
+        public double Area()
         {
-            return Width*Length;
+            return Width * Length;
         }
-// Конструктор по умолчанию, вызывает конструктор базового класса с именем "Прямоугольник"
-public Rectangle() : base("Прямоугольник") 
+        // Конструктор по умолчанию, вызывает конструктор базового класса с именем "Прямоугольник"
+        public void Rectangle()
         {
             length = 1;
             width = 1;
         }
         // Конструктор с параметрами
-        public Rectangle(double length, double width) : base ("Прямоугольник")
+        public void Rectangle(double length, double width)
         {
             Length = length;
             Width = width;
@@ -66,12 +66,17 @@ public Rectangle() : base("Прямоугольник")
             Length = rnd.Next(1, 100);
             Width = rnd.Next(1, 100);
         }
-        public override void Show ()
+        public void Show()
         {
             Console.WriteLine($"Ширина = {width}, длина = {length}");
             Console.ReadLine();
         }
         public override string ToString() => base.ToString() + $", Длина: {Length}, Ширина: {Width}";
-
+        public override int CompareTo(Geometryfigure1 other)
+        {
+            if (other is Rectangle1 otherRect)
+                return (this.Length * this.Width).CompareTo(otherRect.Length * otherRect.Width);
+            return base.CompareTo(other);
+        }
     }
 }
