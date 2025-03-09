@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace lab10._1
 {
-    public abstract class Geometrycfigure : IIni, IComparable<Geometrycfigure>
+    public abstract class Geometrycfigure 
     {
         static string[] NameFigure = { "Прямоугольник", "Окружность", "Параллелепипед" };
         //Название фигуры
@@ -32,7 +32,7 @@ namespace lab10._1
         }
         public override string ToString() => $"Фигура: {Name}";
         // Реализация IComparable<Geometrycfigure>
-        public virtual int CompareTo(Geometryfigure1 other)
+        public virtual int CompareTo(Geometrycfigure other)
         {
             if (other == null) return 1;
             return this.Name.CompareTo(other.Name); // Сортировка по имени
@@ -81,6 +81,6 @@ namespace lab10._1
                 return $"ID: {Number}";
             }
         }
-        public Geometryfigure1 ShallowCopy() => (Geometryfigure1)MemberwiseClone();
+        public Geometrycfigure ShallowCopy() => (Geometrycfigure)MemberwiseClone();
     }
 }

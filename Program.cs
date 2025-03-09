@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace lab10._1
 {
     public class Program
@@ -14,9 +15,9 @@ namespace lab10._1
         {
             static void Main()
             {
-                GeometricFigure f1 = new GeometricFigure();
+                Geometrycfigure f1 = new Geometrycfigure();
                 f1.Show();
-                GeometricFigure f2 = new GeometricFigure("Прямоугольник");
+                Geometrycfigure f2 = new Geometrycfigure("Прямоугольник");
                 f2.Show();
                 Rectangle r1 = new Rectangle();
                 r1.Show();
@@ -31,7 +32,7 @@ namespace lab10._1
                 Parallelepiped p2 = new Parallelepiped(20);
                 p2.Show();
                 // Создаем массив из 20 объектов
-                GeometricFigure[] figures = new GeometricFigure[20];
+                Geometrycfigure[] figures = new Geometrycfigure[20];
                 Random rnd = new Random();
 
                 // Заполняем массив случайными объектами
@@ -73,9 +74,7 @@ namespace lab10._1
                     else if (figure is Parallelepiped)
                         ((Parallelepiped)figure).Show(); // Виртуальный метод Show() для Parallelepiped
                 }
-                // Создаем массив объектов через интерфейс IInit
-                IInit[] objects = new IInit[20];
-                Random rnd = new Random();
+                
 
                 for (int i = 0; i < objects.Length; i++)
                 {
@@ -120,10 +119,10 @@ namespace lab10._1
                 Console.WriteLine($"Параллелепипедов: {paraCount}");
                 Console.WriteLine($"Автомобилей: {carCount}");
                 // Фильтрация только объектов  Geometryfigure1 для сортировки
-                Geometryfigure1[] geometryfigure1s = objects.OfType<Geometryfigure1>().ToArray();
+                Geometrycfigure[] geometryfigure1s = objects.OfType<Geometrycfigure>().ToArray();
 
                 // Сортировка с использованием IComparable
-                Array.Sort(geometryfigure1);
+                Array.Sort(Geometrycfigure);
 
                 // Вывод отсортированных объектов
                 Console.WriteLine("Отсортированные фигуры:");

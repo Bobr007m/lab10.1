@@ -35,13 +35,13 @@ namespace lab10._1
         {
             return Math.PI * Radius * Radius;
         }
-        public override void Init() : base ("Окружность")
+        public override void Init()
         {
             base.Init();
             Console.Write("Введите радиус: ");
             Radius = Convert.ToDouble(Console.ReadLine());
         }
-        public override void RandomInit(): base ("Окружность")
+        public override void RandomInit()
         {
             base.RandomInit();
             Random rnd = new Random();
@@ -54,9 +54,9 @@ namespace lab10._1
         }
         public override string ToString() => base.ToString() + $", Радиус: {Radius}";
         // Переопределение CompareTo для сортировки по радиусу
-        public override int CompareTo(Geometryfigure1 other)
+        public override int CompareTo(Geometrycfigure other)
         {
-            if (other is Circle1 otherCircle)
+            if (other is Circle otherCircle)
                 return this.Radius.CompareTo(otherCircle.Radius);
             return base.CompareTo(other);
         }

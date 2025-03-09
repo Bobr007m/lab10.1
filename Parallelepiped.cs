@@ -1,4 +1,5 @@
-﻿namespace lab10._1
+﻿using System;
+namespace lab10._1
 {
     public class Parallelepiped : Geometrycfigure
     {
@@ -43,9 +44,9 @@
             Console.ReadLine();
         }
         public override string ToString() => base.ToString() + $", Высота: {Height}";
-        public override int CompareTo(Geometryfigure1 other)
+        public override int CompareTo(Geometrycfigure other)
         {
-            if (other is Parallelepiped1 otherPara)
+            if (other is Parallelepiped otherPara)
                 return this.Height.CompareTo(otherPara.Height);
             return base.CompareTo(other);
         }

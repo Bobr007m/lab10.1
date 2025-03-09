@@ -40,7 +40,7 @@ namespace lab10._1
             return Width * Length;
         }
         // Конструктор по умолчанию, вызывает конструктор базового класса с именем "Прямоугольник"
-        public void Rectangle()
+        public void Rectangle1()
         {
             length = 1;
             width = 1;
@@ -72,9 +72,9 @@ namespace lab10._1
             Console.ReadLine();
         }
         public override string ToString() => base.ToString() + $", Длина: {Length}, Ширина: {Width}";
-        public override int CompareTo(Geometryfigure1 other)
+        public override int CompareTo(Geometrycfigure other)
         {
-            if (other is Rectangle1 otherRect)
+            if (other is Rectangle otherRect)
                 return (this.Length * this.Width).CompareTo(otherRect.Length * otherRect.Width);
             return base.CompareTo(other);
         }
