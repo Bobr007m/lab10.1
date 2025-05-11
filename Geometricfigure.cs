@@ -3,7 +3,7 @@
 
 namespace lab10._1
 {
-    public abstract class Geometrycfigure 
+    public class Geometrycfigure1 : ICloneable    
     {
         static string[] NameFigure = { "Прямоугольник", "Окружность", "Параллелепипед" };
         //Название фигуры
@@ -16,6 +16,15 @@ namespace lab10._1
             Console.WriteLine($"Фигура: {Name}");
         }
         // Виртуальный метод для вывода информации о фигуре
+        public virtual void Show1()
+        {
+            Console.WriteLine($"Фигура: {Name}");
+        }
+        public Geometrycfigure1(string name)
+        {
+            Name = name;
+            Id = new IdNumber(0);
+        }
 
         public virtual void Init()
         {
@@ -29,55 +38,23 @@ namespace lab10._1
         }
         public override string ToString() => $"Фигура: {Name}";
         // Реализация IComparable<Geometrycfigure>
-        public virtual int CompareTo(Geometrycfigure other)
+        public virtual int CompareTo(Geometrycfigure1 other)
         {
             if (other == null) return 1;
             return this.Name.CompareTo(other.Name); // Сортировка по имени
         }
-        // Класс IdNumber
-        public class IdNumber
+
+
+        // Реализация интерфейса ICloneable
+        public virtual object Clone()
         {
-            private int number;
-            private object Id;
+            // Создаем поверхностную копию 
+            var copy = (Geometrycfigure1)MemberwiseClone();
 
-            public int Number
-            {
-                get => number;
-                set => number = value < 0 ? 0 : value; // Защита от отрицательных значений
-            }
+            // Копируем изменяемые ссылочные типы
+            copy.Id = new IdNumber(Id.Number);
 
-            // Конструктор по умолчанию
-            public IdNumber()
-            {
-                Number = 0;
-            }
-
-            // Конструктор с параметром
-            public IdNumber(int number)
-            {
-                Number = number;
-            }
-
-            // Переопределение Equals()
-            public override bool Equals(object obj)
-            {
-                if (obj is IdNumber other)
-                    return Number == other.Number;
-                return false;
-            }
-
-            // Переопределение GetHashCode()
-            public override int GetHashCode()
-            {
-                return Number.GetHashCode();
-            }
-
-            // Переопределение ToString()
-            public override string ToString()
-            {
-                return $"ID: {Number}";
-            }
+            return copy;
         }
-        public Geometrycfigure ShallowCopy() => (Geometrycfigure)MemberwiseClone();
     }
 }

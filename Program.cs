@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Linq;
 
 
 namespace lab10._1
@@ -8,28 +8,27 @@ namespace lab10._1
     {
 
         // Демонстрационная программа
-        class Program
-        {
+       
             static void Main()
             {
-                Geometrycfigure f1 = new Geometrycfigure();
+                Geometrycfigure1 f1 = new Geometrycfigure1();
                 f1.Show();
-                Geometrycfigure f2 = new Geometrycfigure("Прямоугольник");
+                Geometrycfigure1 f2 = new Geometrycfigure1("Прямоугольник");
                 f2.Show();
                 Rectangle r1 = new Rectangle();
                 r1.Show();
                 Rectangle r2 = new Rectangle(10, 20);
                 r2.Show();
-                Circle c1 = new Circle();
+                Circle1 c1 = new Circle1();
                 c1.Show();
-                Circle c2 = new Circle(10);
+                Circle1 c2 = new Circle1(10);
                 c2.Show();
-                Parallelepiped p1 = new Parallelepiped();
+                Parallelepiped1 p1 = new Parallelepiped1();
                 p1.Show();
-                Parallelepiped p2 = new Parallelepiped(20);
+                Parallelepiped1 p2 = new Parallelepiped1(20);
                 p2.Show();
                 // Создаем массив из 20 объектов
-                Geometrycfigure[] figures = new Geometrycfigure[20];
+                Geometrycfigure1[] figures = new Geometrycfigure1[20];
                 Random rnd = new Random();
 
                 // Заполняем массив случайными объектами
@@ -39,15 +38,15 @@ namespace lab10._1
                     switch (type)
                     {
                         case 0:
-                            figures[i] = new Circle();
+                            figures[i] = new Circle1();
                             figures[i].RandomInit();
                             break;
                         case 1:
-                            figures[i] = new Rectangle();
+                            figures[i] = new Rectangle1();
                             figures[i].RandomInit();
                             break;
                         case 2:
-                            figures[i] = new Parallelepiped();
+                            figures[i] = new Parallelepiped1();
                             figures[i].RandomInit();
                             break;
                     }
@@ -64,12 +63,12 @@ namespace lab10._1
                 Console.WriteLine("\nПросмотр массива с помощью виртуальных функций:");
                 foreach (var figure in figures)
                 {
-                    if (figure is Circle)
-                        ((Circle)figure).Show(); // Виртуальный метод Show() для Circle
-                    else if (figure is Rectangle)
-                        ((Rectangle)figure).Show(); // Виртуальный метод Show() для Rectangle
-                    else if (figure is Parallelepiped)
-                        ((Parallelepiped)figure).Show(); // Виртуальный метод Show() для Parallelepiped
+                    if (figure is Circle1)
+                        ((Circle1)figure).Show(); // Виртуальный метод Show() для Circle
+                    else if (figure is Rectangle1)
+                        ((Rectangle1)figure).Show(); // Виртуальный метод Show() для Rectangle
+                    else if (figure is Parallelepiped1)
+                        ((Parallelepiped1)figure).Show(); // Виртуальный метод Show() для Parallelepiped
                 }
                 
 
@@ -241,7 +240,57 @@ namespace lab10._1
                 Console.WriteLine(carIndex >= 0
                     ? $"Автомобиль найден! Запас хода: {cars[carIndex].CalculateRemainingRange():F2} км"
                     : "Автомобиль не найден");
+            // Создаем и инициализируем массив фигур
+            Geometrycfigure[] figures1 = new Geometrycfigure[20];
+            Random rand = new Random();
+
+            for (int i = 0; i < figures1.Length; i++)
+            {
+                switch (rand.Next(3))
+                {
+                    case 0: figures1[i] = new Circle(); break;
+                    case 1: figures1[i] = new Rectangle(); break;
+                    case 2: figures1[i] = new Parallelepiped(); break;
+                }
+                figures[i].RandomInit();
+            }
+
+            // Демонстрация запросов
+            Console.WriteLine("Демонстрация запросов");
+
+            // 1. Все квадраты и их площади
+            Queries.ShowAllSquares(figures);
+
+            // 2. Фигуры с размером больше 10
+            Queries.ShowFiguresWithDimensionGreaterThan(figures, 10);
+
+            // В основной программе
+            var figuresI = new Geometrycfigure[]
+            {
+    new Rectangle(3, 4),    // Радиус описанной окружности = 2.5
+    new Rectangle(6, 8),    // Радиус описанной окружности = 5
+    new Circle(5),          // Радиус = 5
+    new Parallelepiped(3, 4, 5) // Радиус описанной сферы ≈ 4.33
+            };
+
+            Queries.ShowFiguresWithRadius(figures, 5);
+
+            // 4. Пример использования typeof для группировки фигур
+            Console.WriteLine("\nГруппировка фигур по типу:");
+            var groupedFigures = figures.GroupBy(f => f.GetType());
+            foreach (var group in groupedFigures)
+            {
+                Console.WriteLine($"{group.Key.Name}: {group.Count()} шт.");
+            }
+
+            // 5. Сортировка и вывод фигур
+            Console.WriteLine("\nОтсортированные фигуры по имени:");
+            Array.Sort(figures);
+            foreach (var figure in figures)
+            {
+                Console.WriteLine(figure);
             }
         }
+        }
     }
-}
+

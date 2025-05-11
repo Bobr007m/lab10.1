@@ -3,7 +3,7 @@
 
 namespace lab10._1
 {
-    public class Circle : Geometrycfigure
+    public class Circle1 : Geometrycfigure1
     {
         protected double radius;
         // Радиус окружности
@@ -19,11 +19,11 @@ namespace lab10._1
             }
         }
         // Конструктор по умолчанию, вызывает конструктор базового класса с именем "Окружность"
-        public Circle()
+        public Circle1() : base("Окружность")
         {
             radius = 1;
         }
-        public Circle(double radius)
+        public Circle1(double radius) : base("Окружность")
         {
             Radius = radius;
         }
@@ -35,8 +35,18 @@ namespace lab10._1
         public override void Init()
         {
             base.Init();
-            Console.Write("Введите радиус: ");
-            Radius = Convert.ToDouble(Console.ReadLine());
+            Radius = ReadPositiveDouble("Введите радиус: ");
+        }
+        private double ReadPositiveDouble(string prompt) //проверка
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                if (double.TryParse(Console.ReadLine(), out double result) && result > 0)
+                    return result;
+
+                Console.WriteLine("Ошибка! Введите положительное число.");
+            }
         }
         public override void RandomInit()
         {
@@ -49,12 +59,17 @@ namespace lab10._1
         {
             Console.WriteLine($"Окружность с радиусом {radius}");
         }
+        public override void Show1()
+        {
+            base.Show1();
+            Console.WriteLine($"Радиус: {Radius}");
+        }
         public override string ToString() => base.ToString() + $", Радиус: {Radius}";
         // Переопределение CompareTo для сортировки по радиусу
-        public override int CompareTo(Geometrycfigure other)
+        public override int CompareTo(Geometrycfigure1 other)
         {
-            if (other is Circle otherCircle)
-                return this.Radius.CompareTo(otherCircle.Radius);
+            if (other is Circle1 otherCircle)
+                return Radius.CompareTo(otherCircle.Radius);
             return base.CompareTo(other);
         }
     }

@@ -3,7 +3,7 @@
 
 namespace lab10._1
 {
-    public class Rectangle : Geometrycfigure
+    public class Rectangle1 : Geometrycfigure1
     {
         protected double length;
         protected double width;
@@ -36,14 +36,15 @@ namespace lab10._1
         {
             return Width * Length;
         }
-        // Конструктор по умолчанию, вызывает конструктор базового класса с именем "Прямоугольник"
-        public void Rectangle1()
+        // Конструктор по умолчанию
+        public Rectangle1() : base("Прямоугольник")
         {
             length = 1;
             width = 1;
         }
+
         // Конструктор с параметрами
-        public void Rectangle(double length, double width)
+        public Rectangle1(double length, double width) : base("Прямоугольник")
         {
             Length = length;
             Width = width;
@@ -51,10 +52,21 @@ namespace lab10._1
         public override void Init()
         {
             base.Init();
-            Console.Write("Введите длину: ");
-            Length = Convert.ToDouble(Console.ReadLine());
-            Console.Write("Введите ширину: ");
-            Width = Convert.ToDouble(Console.ReadLine());
+
+            Length = ReadPositiveDouble("Введите длину: ");
+            Width = ReadPositiveDouble("Введите ширину: ");
+        }
+
+        private double ReadPositiveDouble(string prompt) //проверка
+        {
+            while (true)
+            {
+                Console.Write(prompt);
+                if (double.TryParse(Console.ReadLine(), out double result) && result > 0)
+                    return result;
+
+                Console.WriteLine("Ошибка! Введите положительное число.");
+            }
         }
         public override void RandomInit()
         {
@@ -68,10 +80,15 @@ namespace lab10._1
             Console.WriteLine($"Ширина = {width}, длина = {length}");
             Console.ReadLine();
         }
-        public override string ToString() => base.ToString() + $", Длина: {Length}, Ширина: {Width}";
-        public override int CompareTo(Geometrycfigure other)
+        public override void Show1()
         {
-            if (other is Rectangle otherRect)
+            base.Show1();
+            Console.WriteLine($"Длина: {Length}, Ширина: {Width}");
+        }
+        public override string ToString() => base.ToString() + $", Длина: {Length}, Ширина: {Width}";
+        public override int CompareTo(Geometrycfigure1 other)
+        {
+            if (other is Rectangle1 otherRect)
                 return (this.Length * this.Width).CompareTo(otherRect.Length * otherRect.Width);
             return base.CompareTo(other);
         }
