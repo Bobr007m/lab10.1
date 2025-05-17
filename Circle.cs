@@ -6,6 +6,29 @@ namespace lab10._1
     public class Circle1 : Geometrycfigure1
     {
         protected double radius;
+        public override void Initialize()
+        {
+            base.Initialize(); // Вызов базовой инициализации
+
+            Console.Write("Введите радиус: ");
+            Radius = SafeReadDouble();
+        }
+
+        public override void RandomInitialize()
+        {
+            base.RandomInitialize();
+            Radius = new Random().NextDouble() * 10 + 1;
+        }
+
+        private double SafeReadDouble()
+        {
+            while (true)
+            {
+                if (double.TryParse(Console.ReadLine(), out double result))
+                    return result;
+                Console.WriteLine("Ошибка ввода! Введите число:");
+            }
+        }
         // Радиус окружности
         public double Radius
         {

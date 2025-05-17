@@ -4,12 +4,25 @@ using System.Collections.Generic;
 
 namespace lab10._1
 {
-    public class Geometrycfigure1 : ICloneable, IComparable<Geometrycfigure1>
+    public class Geometrycfigure1 : ICloneable, IComparable<Geometrycfigure1>, IFigureInitializer
     {
         static string[] NameFigure = { "Прямоугольник", "Окружность", "Параллелепипед" };
+
         //Название фигуры
         public string Name { get; set; }
         public IdNumber Id { get; private set; }
+        // Реализация IFigureInitializer
+        public virtual void Initialize()
+        {
+            Console.Write("Введите название фигуры: ");
+            Name = Console.ReadLine();
+        }
+
+        public virtual void RandomInitialize()
+        {
+            var rnd = new Random();
+            Name = "Фигура_" + rnd.Next(1000);
+        }
 
         // Обычный метод Show
         public void Show()

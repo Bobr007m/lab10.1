@@ -62,19 +62,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Circle.cs" />
-    <Compile Include="CircleNameComparer.cs" />
+    <Compile Include="CircleRadiusComparer.cs" />
     <Compile Include="Geometricfigure.cs" />
     <Compile Include="IdNumber.cs" />
+    <Compile Include="IFigureInitializer.cs" />
     <Compile Include="IGeometricFigure1.cs" />
     <Compile Include="IIni.cs" />
     <Compile Include="IShowable.cs" />
     <Compile Include="Parallelepiped.cs" />
-    <Compile Include="ParallelepipedNameComparer.cs" />
+    <Compile Include="ParallelepipedVolumeComparer.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Queries.cs" />
     <Compile Include="Rectangle.cs" />
-    <Compile Include="RectangleLengthComparer.cs" />
+    <Compile Include="RectangleAreaComparer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

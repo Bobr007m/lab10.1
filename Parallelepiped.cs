@@ -6,6 +6,34 @@ namespace lab10._1
         public double Length { get; protected set; }
         public double Width { get; protected set; }
         protected double height;
+        public override void Initialize()
+        {
+            base.Initialize();
+            Console.WriteLine("Введите ширину: ");
+            Width = SafeReadDouble();
+            Console.WriteLine("Введите высоту: ");
+            Height = SafeReadDouble();
+            Console.WriteLine("Введите длину: ");
+            Length = SafeReadDouble();
+        }
+        private double SafeReadDouble()
+        {
+            while (true)
+            {
+                if (double.TryParse(Console.ReadLine(), out double result))
+                    return result;
+                Console.WriteLine("Ошибка ввода! Введите число:");
+            }
+        }
+
+        public override void RandomInitialize()
+        {
+            base.RandomInitialize();
+            var rnd = new Random();
+            Width = rnd.NextDouble() * 10 + 1;
+            Height = rnd.NextDouble() * 10 + 1;
+            Length = rnd.NextDouble() * 10 + 1;
+        }
         // Высота параллелепипеда
         public double Height
         {
