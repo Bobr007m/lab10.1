@@ -86,11 +86,6 @@ namespace lab10._1
             Console.WriteLine($"Длина: {Length}, Ширина: {Width}");
         }
         public override string ToString() => base.ToString() + $", Длина: {Length}, Ширина: {Width}";
-        public override int CompareTo(Geometrycfigure1 other)
-        {
-            if (other is Rectangle1 otherRect)
-                return (this.Length * this.Width).CompareTo(otherRect.Length * otherRect.Width);
-            return base.CompareTo(other);
-        }
+        protected override IComparable ComparisonKey => Length * Width;
     }
 }

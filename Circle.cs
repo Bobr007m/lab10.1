@@ -65,12 +65,6 @@ namespace lab10._1
             Console.WriteLine($"Радиус: {Radius}");
         }
         public override string ToString() => base.ToString() + $", Радиус: {Radius}";
-        // Переопределение CompareTo для сортировки по радиусу
-        public override int CompareTo(Geometrycfigure1 other)
-        {
-            if (other is Circle1 otherCircle)
-                return Radius.CompareTo(otherCircle.Radius);
-            return base.CompareTo(other);
-        }
+        protected override IComparable ComparisonKey => Radius;
     }
 }

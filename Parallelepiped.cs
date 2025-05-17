@@ -76,12 +76,7 @@ namespace lab10._1
             Height = rnd.Next(1, 100);
         }
         public override string ToString() => base.ToString() + $", Высота: {Height}";
-        public override int CompareTo(Geometrycfigure1 other)
-        {
-            if (other is Parallelepiped1 otherPara)
-                return this.Height.CompareTo(otherPara.Height);
-            return base.CompareTo(other);
-        }
+        protected override IComparable ComparisonKey => Length * Width * Height;
 
     }
 }

@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 
 
 namespace lab10._1
 {
-    public class Geometrycfigure1 : ICloneable    
+    public class Geometrycfigure1 : ICloneable, IComparable<Geometrycfigure1>
     {
         static string[] NameFigure = { "Прямоугольник", "Окружность", "Параллелепипед" };
         //Название фигуры
@@ -37,11 +38,20 @@ namespace lab10._1
             Name = "Фигура_" + rnd.Next(1, 100);
         }
         public override string ToString() => $"Фигура: {Name}";
-        // Реализация IComparable<Geometrycfigure>
-        public virtual int CompareTo(Geometrycfigure1 other)
+        // Виртуальное свойство для сравнения
+        protected virtual IComparable ComparisonKey => Name;
+
+        // Реализация IComparable<Geometrycfigure1>
+        public int CompareTo(Geometrycfigure1 other)
         {
             if (other == null) return 1;
-            return this.Name.CompareTo(other.Name); // Сортировка по имени
+
+            // Сначала сравниваем по типу фигуры
+            int typeCompare = GetType().Name.CompareTo(other.GetType().Name);
+            if (typeCompare != 0) return typeCompare;
+
+            // Затем по ComparisonKey, если типы совпадают
+            return Comparer<IComparable>.Default.Compare(ComparisonKey, other.ComparisonKey);
         }
 
 
