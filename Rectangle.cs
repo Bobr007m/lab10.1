@@ -3,10 +3,21 @@
 
 namespace lab10._1
 {
-    public class Rectangle1 : Geometrycfigure1
+    public class Rectangle1 : Geometrycfigure1, IComparable<Rectangle1>
     {
         protected double length;
         protected double width;
+        // Реализация IComparable
+        public int CompareTo(Rectangle1 other)
+        {
+            if (other == null) return 1;
+
+            // Сравниваем по площади
+            double thisArea = this.Area();
+            double otherArea = other.Area();
+
+            return thisArea.CompareTo(otherArea);
+        }
         public override void Initialize()
         {
             base.Initialize();

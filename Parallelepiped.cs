@@ -1,11 +1,17 @@
 ﻿using System;
 namespace lab10._1
 {
-    public class Parallelepiped1 : Geometrycfigure1
+    public class Parallelepiped1 : Geometrycfigure1, IComparable<Parallelepiped1>
     {
         public double Length { get; protected set; }
         public double Width { get; protected set; }
         protected double height;
+        public double Volume() => Length * Width * Height;
+        public int CompareTo(Parallelepiped1 other)
+        {
+            if (other == null) return 1;
+            return Volume().CompareTo(other.Volume());
+        }
         public override void Initialize()
         {
             base.Initialize();

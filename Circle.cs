@@ -3,9 +3,14 @@
 
 namespace lab10._1
 {
-    public class Circle1 : Geometrycfigure1
+    public class Circle1 : Geometrycfigure1, IComparable<Circle1>
     {
         protected double radius;
+        public int CompareTo(Circle1 other)
+        {
+            if (other == null) return 1;
+            return Area().CompareTo(other.Area());
+        }
         public override void Initialize()
         {
             base.Initialize(); // Вызов базовой инициализации
